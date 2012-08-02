@@ -204,9 +204,9 @@ class LexiconCategory(object):
         self.db.redis.delete(*keys)
         
         # remove meta keys
-        for n in self.gram:
-            self.db.redis.delete(self._meta_prefix + ('%s-gram-sum' % n))
-            self.db.redis.delete(self._meta_prefix + ('%s-gram-variety' % n))
+        n = self.gram
+        self.db.redis.delete(self._meta_prefix + ('%s-gram-sum' % n))
+        self.db.redis.delete(self._meta_prefix + ('%s-gram-variety' % n))
         self.db.redis.delete(self._meta_prefix + 'gram')
         
         # remove this category from category set
